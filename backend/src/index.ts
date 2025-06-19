@@ -14,7 +14,7 @@ app.use(cors());
 
 // allow json type data in the backend api post request
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 
 // multer is used to handle file uploads 
 /*all the upoloaded files will be stored in localStorage RAM and the filesize would be 8MB */
@@ -25,12 +25,10 @@ const upload = multer({
     }
 })
 
-
 //simple get endpoint to know whether the server is running
 app.get("/",(req:Request , res: Response)=>{
     res.status(200).json({message:"Server is running"});
 })
-
 
 app.post("/resume/roast",upload.single("resume"),async(req:Request,res:Response, next:NextFunction) : Promise <void>=>
     {
@@ -44,18 +42,29 @@ app.post("/resume/roast",upload.single("resume"),async(req:Request,res:Response,
         const pdfData = await pdfparse(req.file.buffer);
         const resumeContent = pdfData.text;
 
-        const roast  = await ai_generate_roast(resumeContent);
+        // Get additional options from the form
+        const intensity = req.body.intensity || 'medium';
+        const persona = req.body.persona || 'hr';
+        let sections: string[] = [];
+        try {
+            sections = JSON.parse(req.body.sections || '[]');
+        } catch (e) {
+            sections = [];
+        }
+
+        // Pass these to the AI roast generator
+        const roastResult  = await ai_generate_roast(resumeContent, { intensity, persona, sections });
 
         res.status(200).json({
             message: "Resume has been received successfully",
-            roast
+            roast: roastResult.content // Only the roast string
         })
     }
     catch(error)
     {
-        console.log("error processing the resume file")
+        console.log("error processing the resume file", error)
         res.status(500).json({
-            message:"Resume processing error"
+            error:"Resume processing error"
         })
     }
     }
