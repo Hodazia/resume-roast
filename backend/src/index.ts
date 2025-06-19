@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// multer is used to handle file uploads 
+// multer is used to handle file uploads
 /*all the upoloaded files will be stored in localStorage RAM and the filesize would be 8MB */
 const upload = multer({
     storage:multer.memoryStorage(),

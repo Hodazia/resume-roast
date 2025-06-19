@@ -1,4 +1,4 @@
-// this file shall generate the ai roast response for the given pdf
+// thie file shall generate the ai roast response for the given pdf
 import OpenAI from "openai";
 import { OpenAIError } from "openai/error";
 
@@ -83,15 +83,15 @@ Remember: Your goal is to make them laugh while also making them think about the
 
         const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
         
-        const chatCompletion = await openai.chat.completions.create({
-            messages: [
+    const chatCompletion = await openai.chat.completions.create({
+        messages: [
                 {
                     role: "system",
                     content: systemPrompt
                 },
                 { role: "user", content: `Here is the resume to roast: ${content}` }
-            ],
-            model: "gpt-4o-mini",
+        ],
+        model: "gpt-4o-mini",
             temperature: 0.8, // Add some creativity while keeping it focused
             max_tokens: 500, // Limit response length
         });
