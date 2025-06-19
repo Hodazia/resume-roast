@@ -9,8 +9,13 @@ dotenv.config();
 
 const app = express();
 
-// allow requests from everywhere to hit this backend server
-app.use(cors());
+// allow requests from frontend to hit this backend server
+app.use(cors({
+    origin: "https://roast-my-resume-lilac.vercel.app", //  Vercel frontend URL
+    methods: ["GET", "POST"],
+    credentials: false 
+  }));
+
 
 // allow json type data in the backend api post request
 app.use(express.json());
