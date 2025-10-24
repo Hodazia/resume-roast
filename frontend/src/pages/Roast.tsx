@@ -6,7 +6,7 @@ import { FiCopy, FiDownload, FiCheck } from "react-icons/fi";
 // const API_URL = "https://roast-resume-f8p9.onrender.com/resume/roast"; // Change if needed
 
 
-const API_URL = "http://localhost:3000/resume/roast"; // Change if needed
+const API_URL = "https://be-resume-roast.onrender.com/resume/roast"; // Change if needed
 
 const INTENSITIES = [
   { value: "mild", label: "Mild Rant" },

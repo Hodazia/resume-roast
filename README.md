@@ -4,6 +4,9 @@ A web application that provides AI-powered, humorous critiques of resumes. Uploa
 
 ---
 
+| **BACKEND URL** | [https://be-resume-roast.onrender.com/](https://be-resume-roast.onrender.com/)    
+| **FRONTEND URL** | [https://be-resume-roast.onrender.com/](https://be-resume-roast.onrender.com/)  
+
 ## 🚀 Features
 
 - **PDF Resume Upload:** Upload your resume in PDF format for analysis.
