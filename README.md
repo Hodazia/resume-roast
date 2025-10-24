@@ -5,7 +5,7 @@ A web application that provides AI-powered, humorous critiques of resumes. Uploa
 ---
 
 | **BACKEND URL** | [https://be-resume-roast.onrender.com/](https://be-resume-roast.onrender.com/)    
-| **FRONTEND URL** | [https://be-resume-roast.onrender.com/](https://be-resume-roast.onrender.com/)  
+| **FRONTEND URL** | [https://resume-roast-fe.vercel.app/](https://resume-roast-fe.vercel.app/)  
 
 ## 🚀 Features
 
