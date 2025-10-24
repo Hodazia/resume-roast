@@ -20,11 +20,16 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const aigenerate_1 = require("./aigenerate");
 dotenv_1.default.config();
 const app = express();
-// allow requests from everywhere to hit this backend server
+// allow requests from frontend to hit this backend server
+// app.use(cors({ //  Vercel frontend URL
+//     methods: ["GET", "POST"],
+//     credentials: false 
+//   }));
 app.use(cors());
 // allow json type data in the backend api post request
 app.use(express.json());
-// multer is used to handle file uploads 
+app.use(express.urlencoded({ extended: true }));
+// multer is used to handle file uploads
 /*all the upoloaded files will be stored in localStorage RAM and the filesize would be 8MB */
 const upload = multer({
     storage: multer.memoryStorage(),
@@ -45,16 +50,27 @@ app.post("/resume/roast", upload.single("resume"), (req, res, next) => __awaiter
         // the pdf file should be parsed
         const pdfData = yield pdfparse(req.file.buffer);
         const resumeContent = pdfData.text;
-        const roast = yield (0, aigenerate_1.ai_generate_roast)(resumeContent);
+        // Get additional options from the form
+        const intensity = req.body.intensity || 'medium';
+        const persona = req.body.persona || 'hr';
+        let sections = [];
+        try {
+            sections = JSON.parse(req.body.sections || '[]');
+        }
+        catch (e) {
+            sections = [];
+        }
+        // Pass these to the AI roast generator
+        const roastResult = yield (0, aigenerate_1.ai_generate_roast)(resumeContent, { intensity, persona, sections });
         res.status(200).json({
             message: "Resume has been received successfully",
-            roast
+            roast: roastResult.content // Only the roast string
         });
     }
     catch (error) {
-        console.log("error processing the resume file");
+        console.log("error processing the resume file", error);
         res.status(500).json({
-            message: "Resume processing error"
+            error: "Resume processing error"
         });
     }
 }));

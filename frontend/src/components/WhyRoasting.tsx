@@ -26,13 +26,13 @@ const benefits = [
 
 export const WhyRoasting = () => {
   return (
-    <section className="py-24 px-4">
+    <section className="py-24 px-4 bg-stone-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">
             Why Roasting Actually Works
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
             Science-backed reasons why brutal honesty beats empty compliments
           </p>
         </div>
@@ -43,85 +43,36 @@ export const WhyRoasting = () => {
             return (
               <div
                 key={index}
-                className="relative group bg-card border border-border rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 hover:scale-105"
+                className="relative group bg-stone-850 border border-gray-700 rounded-2xl p-8 hover:border-red-500/50 transition-all duration-300 hover:scale-105"
               >
                 {/* Icon */}
-                <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                  <Icon className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 rounded-xl bg-red-500/10 flex items-center justify-center mb-6 group-hover:bg-red-500/20 transition-colors">
+                  <Icon className="w-8 h-8 text-red-500" />
                 </div>
 
                 {/* Content */}
-                <h3 className="text-2xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground mb-4">
+                <h3 className="text-2xl font-bold mb-3 text-white">{benefit.title}</h3>
+                <p className="text-gray-400 mb-4">
                   {benefit.description}
                 </p>
 
                 {/* Stat */}
-                <div className="pt-4 border-t border-border">
-                  <p className="text-sm font-mono text-primary font-bold">
+                <div className="pt-4 border-t border-gray-700">
+                  <p className="text-sm font-mono text-red-500 font-bold">
                     {benefit.stat}
                   </p>
                 </div>
 
                 {/* Glow effect on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-red-500/0 
+                via-red-500/5 to-red-500/0 opacity-0 group-hover:opacity-100 
+                transition-opacity duration-300 pointer-events-none" />
               </div>
             );
           })}
         </div>
 
-        {/* Real examples */}
-        <div className="mt-20 text-center">
-          <h3 className="text-3xl font-bold mb-12">Before & After Glow-ups</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            {/* Example 1 */}
-            <div className="space-y-4">
-              <div className="bg-destructive/10 border border-destructive/30 rounded-xl p-6">
-                <p className="text-sm font-mono text-left">
-                  ❌ <strong>"Responsible for team management"</strong>
-                  <br />
-                  <span className="text-muted-foreground">
-                    Vague, boring, zero impact
-                  </span>
-                </p>
-              </div>
-              <div className="text-2xl">↓</div>
-              <div className="bg-primary/10 border border-primary/30 rounded-xl p-6">
-                <p className="text-sm font-mono text-left">
-                  ✅ <strong>"Led 12-person team to deliver $2M project 3 weeks early"</strong>
-                  <br />
-                  <span className="text-muted-foreground">
-                    Specific, quantified, impressive
-                  </span>
-                </p>
-              </div>
-            </div>
 
-            {/* Example 2 */}
-            <div className="space-y-4">
-              <div className="bg-destructive/10 border border-destructive/30 rounded-xl p-6">
-                <p className="text-sm font-mono text-left">
-                  ❌ <strong>"Good at communication"</strong>
-                  <br />
-                  <span className="text-muted-foreground">
-                    Everyone says this, meaningless
-                  </span>
-                </p>
-              </div>
-              <div className="text-2xl">↓</div>
-              <div className="bg-primary/10 border border-primary/30 rounded-xl p-6">
-                <p className="text-sm font-mono text-left">
-                  ✅ <strong>"Presented to 500+ stakeholders, reducing Q&A by 60%"</strong>
-                  <br />
-                  <span className="text-muted-foreground">
-                    Shows impact, not just claims
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

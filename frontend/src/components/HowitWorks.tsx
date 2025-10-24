@@ -35,13 +35,13 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section className="py-24 px-4 bg-card/30">
+    <section className="py-24 px-4 bg-stone-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-white">
             How It Works
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-gray-400">
             5 simple steps from mediocre to hired
           </p>
         </div>
@@ -56,20 +56,22 @@ export const HowItWorks = () => {
               >
                 {/* Arrow connector */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-12 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-primary/50 to-transparent" />
+                  <div className="hidden md:block absolute top-12 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-red-500/50 to-transparent" />
                 )}
 
                 {/* Icon circle */}
-                <div className="relative z-10 w-24 h-24 rounded-full bg-card border-2 border-primary/30 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-primary transition-all duration-300 group-hover:glow-fire">
-                  <Icon className="w-10 h-10 text-primary" />
+                <div className="relative z-10 w-24 h-24 rounded-full bg-stone-900
+                border-2 border-red-500/30 flex items-center justify-center mb-4
+                 group-hover:scale-110 group-hover:border-red-500 transition-all duration-300">
+                  <Icon className="w-10 h-10 text-red-500" />
                 </div>
 
-                {/* Step number */}
+                {/* Step emoji */}
                 <div className="text-4xl mb-2">{step.emoji}</div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="text-xl font-bold mb-2 text-white">{step.title}</h3>
+                <p className="text-sm text-gray-400">
                   {step.description}
                 </p>
               </div>
