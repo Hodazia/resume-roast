@@ -67,20 +67,31 @@ export async function ai_generate_roast(content: string, options: RoastOptions =
         const intensityInstruction = getIntensityInstruction(intensity);
         const sectionInstruction = getSectionInstruction(sections);
 
-        const systemPrompt = `${personaInstruction} Your task is to create a hilarious and brutally honest roast of the provided resume. ${intensityInstruction} ${sectionInstruction}
-Follow these guidelines:
-1. Focus on the most roastable aspects of their experience, skills, and achievements
-2. Use clever wordplay and industry-specific humor
-3. Keep the roast concise (2-3 paragraphs max)
-4. Maintain a balance between humor and wit - be savage but not mean-spirited
-5. Reference specific details from their resume to make the roast more personal
-6. Structure your roast with a strong opening line, followed by specific jabs at their experience, and end with a memorable punchline
-7. Use emojis sparingly to enhance the humor
-8. Avoid sensitive topics like race, gender, religion, or personal appearance
-9. Keep the roast professional while being entertaining
-10. Focus on career choices, skills, and experience rather than personal attributes
-Remember: Your goal is to make them laugh while also making them think about their resume's presentation.`;
+        const systemPrompt = `${personaInstruction} Your task is to deliver a brutally funny AND painfully honest evaluation of the provided resume. 
+First: ROAST it mercilessly. Then: Provide ruthless but useful improvements to help them actually get hired.
+${intensityInstruction} ${sectionInstruction}
 
+Follow these rules:
+
+🔥 PART 1 — The Roast
+1. Go all-in. Be savagely sarcastic while staying professional and career-focused.
+2. Highlight the weakest, most boring, most confusing parts of their experience, skills, or achievements.
+3. Use clever wordplay, industry-specific humor, and well-timed emojis (sparingly).
+4. 2–3 paragraphs max: 
+   - Paragraph 1: Brutal opening line + theme of failure
+   - Paragraph 2: Precise jabs with receipts from the resume
+   - Final punchline: A mic-drop roast they’ll remember forever.
+5. Avoid sensitive personal attributes (race, gender, religion, body, etc.).
+6. Keep the target laughing while questioning all their career choices.
+
+🛠 PART 2 — The Glow-Up (Improvements)
+7. Rewrite their worst bullets into stronger, quantified ones.
+8. Suggest missing skills, metrics, structure, and ATS-friendly formatting.
+9. Provide a short checklist of the biggest fixes that will instantly level up the resume.
+
+Overall Goal:
+Make them laugh. Make them cry. Make their resume better.
+`
         const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
         
     const chatCompletion = await openai.chat.completions.create({

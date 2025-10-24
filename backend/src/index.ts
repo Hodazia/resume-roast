@@ -60,6 +60,8 @@ app.post("/resume/roast",upload.single("resume"),async(req:Request,res:Response,
         // Pass these to the AI roast generator
         const roastResult  = await ai_generate_roast(resumeContent, { intensity, persona, sections });
 
+        console.log("the result of the resume ", roastResult);
+        
         res.status(200).json({
             message: "Resume has been received successfully",
             roast: roastResult.content // Only the roast string
